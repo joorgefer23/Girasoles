@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores Amarillas para el Amor de mi Vida</title>
+    <style>
+        /* --- ESTILOS CSS --- */
+
+        /* Reseteo básico y tipografía */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif; /* Tipografía limpia */
+        }
+
+        /* Fondo de la página: degrade rosa oscuro con efecto bokeh de corazones */
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: radial-gradient(circle, #ff176f 0%, #a80a4f 100%);
+            position: relative;
+        }
+
+        /* Efecto de corazones de fondo (bokeh) */
+        body::before {
+            content: '❤ ❤ ❤ ❤ ❤ ❤';
+            position: absolute;
+            width: 1000px;
+            height: 1000px;
+            font-size: 150px;
+            color: rgba(255, 255, 255, 0.05);
+            line-height: 250px;
+            filter: blur(20px);
+            z-index: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* El contenedor principal de la tarjeta */
+        #card-container {
+            width: 90%;
+            max-width: 600px;
+            background-color: #f5eedb; /* Color de fondo beige suave */
+            border-radius: 20px; /* Bordes redondeados */
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* El encabezado "ALEX DEV" */
+        header {
+            width: 100%;
+            text-align: right;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.6);
+            margin-bottom: 10px;
+        }
+
+        /* Contenedor para el árbol de girasoles */
+        #tree-canvas {
+            width: 100%;
+            height: 200px; /* Ajusta la altura según necesites */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="47" y="60" width="6" height="40" fill="%238B4513"/><path d="M50,10 C35,10,25,25,25,40 C25,55,35,70,50,70 C65,70,75,55,75,40 C75,25,65,10,50,10 Z" fill="%23FFD700" stroke="%23FFA500" stroke-width="2"/><circle cx="50" cy="40" r="10" fill="%234B3621"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            background-size: contain;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        /* Pequeñas flores cayendo */
+        #tree-canvas::after {
+            content: '🌻';
+            font-size: 20px;
+            position: absolute;
+            animation: fall 5s infinite ease-in;
+        }
+
+        #tree-canvas::before {
+            content: '🌻';
+            font-size: 15px;
+            position: absolute;
+            animation: fall2 7s infinite ease-in;
+        }
+
+        @keyframes fall {
+            0% { top: 30px; left: 45%; opacity: 0; }
+            10% { opacity: 1; }
+            100% { top: 220px; left: 60%; opacity: 0; }
+        }
+
+        @keyframes fall2 {
+            0% { top: 50px; left: 55%; opacity: 0; }
+            10% { opacity: 1; }
+            100% { top: 250px; left: 40%; opacity: 0; }
+        }
+
+        /* Sección de texto romántico */
+        #romance-text {
+            text-align: left;
+            color: #3e311f; /* Marrón oscuro */
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        #romance-text p {
+            margin-bottom: 10px;
+        }
+
+        /* Sección del contador */
+        #counter-section {
+            width: 100%;
+            border-top: 1px solid rgba(0, 0, 0, 0.2); /* Línea divisoria */
+            padding-top: 15px;
+            margin-top: auto;
+            color: rgba(0, 0, 0, 0.7);
+            font-size: 14px;
+            text-align: left;
+        }
+
+        /* Estilo para los números del contador */
+        #live-counter span {
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.9);
+            font-size: 16px;
+        }
+
+        /* Marca de agua de TikTok */
+        #tiktok-watermark {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="card-container">
+        <header>ALEX DEV</header>
+
+        <div id="tree-canvas"></div>
+
+        <div id="romance-text">
+            <p>Flores Amarillas para el amor de mi vida:</p>
+            <p>Si pudiera elegir un lugar seguro, sería a tu lado.</p>
+            <p>Cuanto más tiempo estoy contigo más te amo.</p>
+            <p>— I Love You!</p>
+        </div>
+
+        <div id="counter-section">
+            <p>Mi amor por ti comenzó hace...</p>
+            <p id="live-counter">
+                <span id="days">XX</span> días <span id="hours">YY</span> horas <span id="minutes">ZZ</span> minutos <span id="seconds">AA</span> segundos
+            </p>
+        </div>
+    </div>
+
+    <div id="tiktok-watermark">TikTok @alexx.dev</div>
+
+    <script>
+        /* --- SCRIPT JAVASCRIPT --- */
+
+        /* Define la fecha de inicio. Para este ejemplo, es exactamente hace un año.
+           Puedes cambiar esta fecha por la que tú quieras.
+           Formato: AAAA, MM (empezando en 0), DD, HH, MM, SS */
+        const startDate = new Date(new Date().getFullYear() - 1, 0, 1, 0, 0, 0); 
+        // startDate.setFullYear(startDate.getFullYear() - 1); // Hace 1 año desde hoy
+
+        function updateCounter() {
+            const now = new Date();
+            const difference = now - startDate; // Diferencia en milisegundos
+
+            // Cálculos de tiempo
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Actualizar los elementos HTML
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        // Llamar a la función una vez inmediatamente
+        updateCounter();
+
+        // Configurar un intervalo para actualizar cada segundo
+        setInterval(updateCounter, 1000);
+    </script>
+</body>
+</html>
